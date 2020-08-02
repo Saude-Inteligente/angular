@@ -65,7 +65,7 @@
                             <h4 class="text-dark">{{ item.subTitle }}</h4>
                             <div class="input-group mb-3" *ngIf="hasItemType(item.type, 'keyboard')">
                                 <input type="text" id="{{item.input}}" class="form-control"
-                                    (keydown)="$event.preventDefault();" [placeholder]="item.placeholder"
+                                    [placeholder]="item.placeholder"
                                     value="{{form[item.input]}}">
                                 <!-- <div class="input-group-append">
                                     <button class="btn btn-secondary" type="button"><i
@@ -89,74 +89,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 mt-5" *ngIf="hasItemType(item.type, 'content-result')">
-                            <h3><strong>79,4</strong> quilos</h3>
-                            <h3>IMC de <strong>26,55</strong></h3>
-                            <h4 class="font-weight-bold text-warning">você está acima do peso ideal.</h4>
-                            <div class="d-flex align-items-center mt-5">
-                                <div class="p-2 bd-highlight text-left">
-                                    <img [src]="item.result_img">
-                                </div>
-                                <div class="p-2 bd-highlight text-left">
-                                    Para ajudar a perder peso, procure deixar seu prato de refeição mais balanceado:
-
-                                    <dl class="row mt-2">
-                                        <dt class="col-sm-1"><i class="fas fa-arrow-circle-right"></i></dt>
-                                        <dd class="col-sm-11">metade de verduras e legumes</dd>
-
-                                        <dt class="col-sm-1"><i class="fas fa-arrow-circle-right"></i></dt>
-                                        <dd class="col-sm-11">1/4 de proteínas como carne e ovos</dd>
-
-                                        <dt class="col-sm-1"><i class="fas fa-arrow-circle-right"></i></dt>
-                                        <dd class="col-sm-11">1/4 de carboidratos como arroz, macarrão e batata</dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mt-5" *ngIf="hasItemType(item.type, 'content-result-temperature')">
-                            <h3><strong>36,5°</strong></h3>
-                            <h4 class="font-weight-bold text-success">Sua temperatura está boa</h4>
-                        </div>
-                        <div class="col-lg-6 mt-5" *ngIf="hasItemType(item.type, 'sex-option')">
-                            <div class="card text-center card-option" (click)="sexOptionResult(true)"
-                                [ngClass]="{'bg-white text-dark card-selected': form.sex === true}">
-                                <div class="card-body">
-                                    <h3><i class="fas fa-male icon-lg-size"></i></h3>
-                                </div>
-                                <div class="card-footer text-dark border-0">
-                                    <h3>masculino</h3>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-5" *ngIf="hasItemType(item.type, 'sex-option')">
-                            <div class="card text-center card-option" (click)="sexOptionResult(false)"
-                                [ngClass]="{'bg-white text-dark card-selected': form.sex === false}">
-                                <div class="card-body">
-                                    <h3><i class="fas fa-female icon-lg-size"></i></h3>
-                                </div>
-                                <div class="card-footer text-dark border-0">
-                                    <h3>feminino</h3>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
-                </div>
-                <div class="col-md-3 mt-5 ml-5">
-
-                    <div class="card" *ngIf="item.img || item.text">
-                        <div class="card-header bg-danger text-uppercase">
-                            {{item.card_title}}
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{item.text}}</p>
-                        </div>
-                        <img class="card-img-top p-2" [src]="item.img">
-                    </div>
-
-                    <img [src]="item.vector" height="500">
-
                 </div>
             </div>
         </div>
