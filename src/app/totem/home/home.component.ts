@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import Keyboard from "simple-keyboard";
 
-import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { RequestService } from '../../services/request/request.service'
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-totem-home',
@@ -18,7 +20,7 @@ export class TotemHomeComponent implements OnInit {
     actualSlide: number = 0;
 
     form = {
-        full_name: null,
+        full_name: 123,
         arterial_pressure: null,
         height: null,
         weight: null,
@@ -65,7 +67,7 @@ export class TotemHomeComponent implements OnInit {
             placeholder: 'Digite sua pressão arterial',
         },
     ]
-    constructor(private modalService: NgbModal) {
+    constructor(private modalService: NgbModal, private request: RequestService) {
         this.config = {
             licenseKey: 'YOUR LICENSE KEY HERE',
             menu: '#menu',
@@ -80,23 +82,24 @@ export class TotemHomeComponent implements OnInit {
     back(index: number) {
         this.actualSlide = (index - 1);
         this.fullpage_api.moveSectionUp();
-        this.verify();
     }
 
     next(index: number) {
         this.actualSlide = (index + 1);
-        this.fullpage_api.moveSectionDown();
-        this.verify();
+
+        if (this.actualSlide === this.render.length) {
+            this.submit()
+        }
+        else {
+            this.fullpage_api.moveSectionDown();
+        }
     }
 
-    verify() {
-        if (this.isModal()) {
-            this.openModal(this.content);
-        } else if (this.isLoading() || this.isLoadingContent()) {
-            setTimeout(() => this.next(this.actualSlide), 2000);
-        } else {
-       //     this.keyboads(); 
-        }
+    async submit() {
+        await this.request.request('https://api-health-analytics.herokuapp.com/users',
+        'POST',this.form)
+
+        this.fullpage_api.moveSectionDown();
     }
 
     exit() {
@@ -117,20 +120,6 @@ export class TotemHomeComponent implements OnInit {
 
     hasItemType(type: string, result: string) {
         return type === result;
-    }
-
-    isModal() {
-        return (this.render[this.actualSlide].type === 'modal');
-    }
-
-    isLoading() {
-        const { type } = this.render[this.actualSlide];
-        return (this.render[this.actualSlide].type === 'loading');
-    }
-
-    isLoadingContent() {
-        const { type } = this.render[this.actualSlide];
-        return (this.render[this.actualSlide].type === 'content-loading');
     }
 
     openModal(content) {
@@ -154,5 +143,9 @@ export class TotemHomeComponent implements OnInit {
             this.hasItemType(item.type, 'content-result') ||
             this.hasItemType(item.type, 'content-result-temperature') ||
             this.hasItemType(item.type, 'content-loading');
+    }
+
+    defineValue($event: any, input: string) {
+        this.form[input] = $event.target.value;
     }
 }
