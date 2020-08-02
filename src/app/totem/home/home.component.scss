@@ -75,16 +75,16 @@
     }
 
     .btn-outline-danger {
-        color: #9e260d !important;
-        border-color: #9e260d !important;
+        color: #fa6400 !important;
+        border-color: #fa6400!important;
     }
 
     .text-danger {
-        color: #9e260d !important;
+        color: #fa0000 !important;
     }
 
     .bg-danger {
-        background-color: #9e260d !important;
+        background-color: #fa0000 !important;
         color: white;
     }
 
@@ -115,11 +115,13 @@
         color: #fbc300 !important;
     }
 
+    .container img {
+        max-width:328px;
+        max-height:150px;
+        width: auto;
+        height: auto;
+        margin-left: 500px;
+        margin-right: auto;
+    }
 
-html {
-    background: url(/assets/imgs/wallpaper.jpg) no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
-}
 }
