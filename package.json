@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng build --prod && npm run upload",
-    "upload": "npx ngh --repo=git@github.com:decimo-eixo/decimo-eixo.github.io.git --name=velrino --email=denismagalhaesvelrino@gmail.com  --branch=master --dir=dist/"
+    "upload": "npx ngh --repo=git@github.com:Saude-Inteligente/saude-inteligente.github.io.git --name=naelisilva --email=naelisilva15@gmail.com  --branch=master --dir=dist/"
   },
   "private": true,
   "dependencies": {
