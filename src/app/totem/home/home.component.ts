@@ -39,6 +39,20 @@ export class TotemHomeComponent implements OnInit {
             placeholder: 'Digite seu nome',
         },
         {
+            title: '<strong>Qual sua data de aniversário?</strong>',
+            input: 'date_of_birth',
+            keyboard: null,
+            type: 'keyboard',
+            placeholder: 'Digite sua pressão arterial',
+        },
+        {
+            title: '<strong>Qual seu genero?</strong>',
+            input: 'gender',
+            keyboard: null,
+            type: 'keyboard',
+            placeholder: 'Digite sua pressão arterial',
+        },
+        {
             title: '<strong>Qual seu peso?</strong>',
             input: 'weight',
             keyboard: null,
