@@ -5,6 +5,11 @@ import { RequestService } from '../../services/request/request.service'
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+
+export class DashboardWelcomeComponent {
+
+}
+
 @Component({
     selector: 'app-totem-home',
     templateUrl: './home.component.html',

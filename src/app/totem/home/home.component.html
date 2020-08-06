@@ -80,7 +80,13 @@
     </button>
   </div>
 </ng-template>
-<img src="/assets/imgs/Bem_Estar_logo_2015.png" alt="logo bem estar" class="position-fixed" style="left: 50%; top: 3%; z-index: 9999999999999999999999999999999" height="75"/>
+<img
+  src="/assets/imgs/Bem_Estar_logo_2015.png"
+  alt="logo bem estar"
+  class="position-fixed"
+  style="left: 50%; top: 3%; z-index: 9999999999999999999999999999999;"
+  height="75"
+/>
 <div
   fullpage
   id="fullpage"
@@ -168,16 +174,28 @@
       </div>
     </div>
   </div>
-  <div class="section" *ngFor="let item of render; let i = index">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
+  <div class="section">
+    <div class="container p-0">
+      <div class="row justify-content-md">
+        <div class="col-md-auto col-md-12">
           <div class="row">
-            <img
-              src="/assets/imgs/Bem_Estar_logo_2015.png"
-              alt="logo bem estar"
-            />
-            Verificamos que você precisa de um alto atendimento, vamos seguir?
+            <div class="col-lg-12">
+              <div class="container header text-white">
+                <div class="pt-5">
+                  <h2>
+                    Verificamos que você precisa de um alto atendimento. 
+                    <p>Seja bem-vindo,
+                    </p>
+                  </h2>
+                  <h5 class="font-weight-bold">Igla Generoso</h5>
+                  <div class="container mt-5">
+                    <div class="row mt-5">
+                      <div class="col-12 mt-5">
+                  <button _ngcontent-wig-c108="" type="button" class="btn bg-white btn-outline-danger btn-lg btn-block float-left font-weight-bold">Não concordo</button>
+                  <button _ngcontent-wig-c108="" type="button" class="btn btn-raised btn-warning btn-lg text-dark btn-block float-right ml-3 btn-block "> Sim, concordo </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
