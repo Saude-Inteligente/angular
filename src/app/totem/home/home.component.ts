@@ -25,12 +25,17 @@ export class TotemHomeComponent implements OnInit {
     actualSlide: number = 0;
 
     form = {
-        full_name: 123,
+        full_name: null,
         arterial_pressure: null,
         height: null,
         weight: null,
         imc: null,
         temperature: null,
+        cardiac_problems: null, 
+        breating_problems: null, 
+        smoking: null, 
+        city: null, 
+
     }
 
     modalTitle = '';
@@ -42,6 +47,13 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'keyboard',
             placeholder: 'Digite seu nome',
+        },
+        {
+            title: '<strong>Qual sua cidade?</strong>',
+            input: 'city',
+            keyboard: null,
+            type: 'keyboard',
+            placeholder: 'Digite onde qual cidade vocẽ é',
         },
         {
             title: '<strong>Qual sua data de aniversário?</strong>',
@@ -70,6 +82,20 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'keyboard',
             placeholder: 'Digite sua altura',
+        },
+        {
+            title: '<strong>Você tem problemas cardíaco?</strong>',
+            input: 'cardiac_problems',
+            keyboard: null,
+            type: 'keyboard',
+            placeholder: 'Sim ou Não',
+        },
+        {
+            title: '<strong>Você tem problemas respiratórios?</strong>',
+            input: 'breating_problems',
+            keyboard: null,
+            type: 'keyboard',
+            placeholder: 'Sim ou Não',
         },
         {
             title: '<strong>Qual sua temperatura ?</strong>',
