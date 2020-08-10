@@ -23,6 +23,9 @@ export class TotemHomeComponent implements OnInit {
     keyboard: Keyboard;
     modalRef: NgbModal;
     actualSlide: number = 0;
+    loading: boolean = false;
+    loading_text: string;
+    result: boolean = false;
 
     form = {
         full_name: null,
@@ -31,10 +34,10 @@ export class TotemHomeComponent implements OnInit {
         weight: null,
         imc: null,
         temperature: null,
-        cardiac_problems: null, 
-        breating_problems: null, 
-        smoking: null, 
-        city: null, 
+        cardiac_problems: null,
+        breating_problems: null,
+        smoking: null,
+        city: null,
 
     }
 
@@ -53,21 +56,21 @@ export class TotemHomeComponent implements OnInit {
             input: 'city',
             keyboard: null,
             type: 'keyboard',
-            placeholder: 'Digite onde qual cidade vocẽ é',
+            placeholder: 'Digite sua cidade',
         },
         {
             title: '<strong>Qual sua data de aniversário?</strong>',
             input: 'date_of_birth',
             keyboard: null,
             type: 'keyboard',
-            placeholder: 'Digite sua pressão arterial',
+            placeholder: 'Digite seu aniversário',
         },
         {
             title: '<strong>Qual seu genero?</strong>',
             input: 'gender',
             keyboard: null,
             type: 'keyboard',
-            placeholder: 'Digite sua pressão arterial',
+            placeholder: 'Digite seu genero',
         },
         {
             title: '<strong>Qual seu peso?</strong>',
@@ -84,18 +87,25 @@ export class TotemHomeComponent implements OnInit {
             placeholder: 'Digite sua altura',
         },
         {
+            title: '<strong>Você fuma ou bebe?</strong>',
+            input: 'smoking',
+            keyboard: null,
+            type: 'select',
+            placeholder: 'Sim ou não',
+        },
+        {
             title: '<strong>Você tem problemas cardíaco?</strong>',
             input: 'cardiac_problems',
             keyboard: null,
-            type: 'keyboard',
-            placeholder: 'Sim ou Não',
+            type: 'select',
+            placeholder: 'Digite sim ou não',
         },
         {
             title: '<strong>Você tem problemas respiratórios?</strong>',
             input: 'breating_problems',
             keyboard: null,
-            type: 'keyboard',
-            placeholder: 'Sim ou Não',
+            type: 'select',
+            placeholder: 'Digite sim ou não',
         },
         {
             title: '<strong>Qual sua temperatura ?</strong>',
@@ -132,18 +142,50 @@ export class TotemHomeComponent implements OnInit {
     next(index: number) {
         this.actualSlide = (index + 1);
 
+        this.middleware()
+
         if (this.actualSlide === this.render.length) {
             this.submit()
         }
-        else {
+        else if(!this.loading) {
             this.fullpage_api.moveSectionDown();
         }
     }
 
+    middleware() {
+        const checkIndex = (this.actualSlide - 1);
+        const { input } = this.render[checkIndex];
+
+        if (input === 'temperature') {
+            this.loading_text = 'Medindo sua temperatura';
+            this.setTimeLoading()
+        } else if (input === 'arterial_pressure') {
+            this.loading_text = 'Medindo sua pressão arterial';
+            this.setTimeLoading()
+        }
+    }
+
+    setTimeLoading(second: number = 2000) {
+        this.loading = true;
+        setTimeout(() => {
+            this.loading = false;
+            if(this.actualSlide !== this.render.length) {
+                this.fullpage_api.moveSectionDown();
+            }
+        }, second)
+    }
+
     async submit() {
         await this.request.request('https://api-health-analytics.herokuapp.com/users',
-        'POST',this.form)
+            'POST', this.form)
+        
+        // NEGATIVO
+        this.result = false;
+        console.log(this.result)
 
+        /* POSITIVO
+        this.result = true;
+        */
         this.fullpage_api.moveSectionDown();
     }
 
@@ -181,13 +223,6 @@ export class TotemHomeComponent implements OnInit {
 
     hideModal() {
         this.modalService.dismissAll();
-    }
-
-    hasContent(item) {
-        return this.hasItemType(item.type, 'keyboard') ||
-            this.hasItemType(item.type, 'content-result') ||
-            this.hasItemType(item.type, 'content-result-temperature') ||
-            this.hasItemType(item.type, 'content-loading');
     }
 
     defineValue($event: any, input: string) {
