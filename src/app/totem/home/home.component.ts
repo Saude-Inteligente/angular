@@ -46,7 +46,7 @@ export class TotemHomeComponent implements OnInit {
     render = [
         {
             title: '<strong>Qual é o seu nome?</strong>',
-            subTitle: 'Pedimos esse dado para que suas informações de saúde sejam armazenadas com segurança nos sistemas da Digital Innovetion One.',
+            subTitle: 'Pedimos esse dado para que suas informações de saúde sejam armazenadas com segurança no sistema da Digital Innovation One.',
             input: 'full_name',
             keyboard: null,
             type: 'keyboard',
@@ -71,8 +71,12 @@ export class TotemHomeComponent implements OnInit {
             title: '<strong>Qual seu genero?</strong>',
             input: 'gender',
             keyboard: null,
-            type: 'keyboard',
+            type: 'select',
             placeholder: 'Digite seu genero',
+            options: [
+                { value: 'female', label: 'feminino' },
+                { value: 'male', label: 'masculino' },
+            ]
         },
         {
             title: '<strong>Qual seu peso?</strong>',
@@ -103,6 +107,10 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'select',
             placeholder: 'Digite sim ou não',
+            options: [
+                { value: false, label: 'não' },
+                { value: true, label: 'sim' },
+            ]
         },
         {
             title: '<strong>Você tem problemas respiratórios?</strong>',
@@ -151,7 +159,7 @@ export class TotemHomeComponent implements OnInit {
         if (this.actualSlide === this.render.length) {
             this.submit()
         }
-        else if(!this.loading) {
+        else if (!this.loading) {
             this.fullpage_api.moveSectionDown();
         }
     }
@@ -173,7 +181,7 @@ export class TotemHomeComponent implements OnInit {
         this.loading = true;
         setTimeout(() => {
             this.loading = false;
-            if(this.actualSlide !== this.render.length) {
+            if (this.actualSlide !== this.render.length) {
                 this.fullpage_api.moveSectionDown();
             }
         }, second)
@@ -182,7 +190,7 @@ export class TotemHomeComponent implements OnInit {
     async submit() {
         await this.request.request('https://api-health-analytics.herokuapp.com/users',
             'POST', this.form)
-        
+
         // NEGATIVO
         this.result = false;
         console.log(this.result)

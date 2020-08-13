@@ -31,8 +31,7 @@
                   (keydown)="defineValue($event, item.input)"
                 *ngIf="item.type === 'keyboard'"/>
                 <select class="form-control" *ngIf="item.type === 'select'" (change)="defineValue($event, item.input)">
-                  <option value="true">Sim</option>
-                  <option value="false">Não</option>
+                  <option *ngFor="let option of item.options" [value]="option.value">{{option.label}}</option>
                 </select>
                 <!-- <div class="input-group-append">
                                     <button class="btn btn-secondary" type="button"><i
