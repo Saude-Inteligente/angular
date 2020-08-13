@@ -24,6 +24,7 @@
                 <input
                   type="text"
                   [mask]="item.mask ? item.mask : letters"
+                  thousandSeparator=","
                   id="{{ item.input }}"
                   class="form-control"
                   [placeholder]="item.placeholder"
