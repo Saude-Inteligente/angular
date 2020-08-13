@@ -18,6 +18,7 @@ export class DashboardWelcomeComponent {
 export class TotemHomeComponent implements OnInit {
     @ViewChild('fullpageRef') fp_directive: ElementRef;
     @ViewChild('content') content: any;
+    letters = 'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS';
     config;
     fullpage_api;
     keyboard: Keyboard;
@@ -64,6 +65,7 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'keyboard',
             placeholder: 'Digite seu aniversário',
+            mask: '00/00/0000'
         },
         {
             title: '<strong>Qual seu genero?</strong>',

@@ -23,6 +23,7 @@
               <div class="input-group mb-3">
                 <input
                   type="text"
+                  [mask]="item.mask ? item.mask : letters"
                   id="{{ item.input }}"
                   class="form-control"
                   [placeholder]="item.placeholder"
