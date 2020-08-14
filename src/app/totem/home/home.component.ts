@@ -33,7 +33,6 @@ export class TotemHomeComponent implements OnInit {
         arterial_pressure: null,
         height: null,
         weight: null,
-        imc: null,
         temperature: null,
         cardiac_problems: null,
         breating_problems: null,
@@ -65,7 +64,7 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'keyboard',
             placeholder: 'Digite seu aniversário',
-            mask: '00/00/0000'
+            mask: '00/00/00000'
         },
         {
             title: '<strong>Qual seu genero?</strong>',

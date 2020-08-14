@@ -27,7 +27,7 @@
                   id="{{ item.input }}"
                   class="form-control"
                   [placeholder]="item.placeholder"
-                  (keydown)="defineValue($event, item.input)"
+                  (keyup)="defineValue($event, item.input)"
                 *ngIf="item.type === 'keyboard' && !item.mask"/>
                 <!-- WITH MASK -->
                 <input
@@ -37,7 +37,7 @@
                 id="{{ item.input }}"
                 class="form-control"
                 [placeholder]="item.placeholder"
-                (keydown)="defineValue($event, item.input)"
+                (keyup)="defineValue($event, item.input)"
               *ngIf="item.type === 'keyboard' && item.mask"/>
                 <select class="form-control" *ngIf="item.type === 'select'" (change)="defineValue($event, item.input)">
                   <option *ngFor="let option of item.options" [value]="option.value">{{option.label}}</option>
