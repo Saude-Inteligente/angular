@@ -84,7 +84,7 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'keyboard',
             placeholder: 'Digite seu peso',
-            mask: "000.00"
+            mask: "00.00"
         },
         {
             title: '<strong>Qual sua altura?</strong>',
