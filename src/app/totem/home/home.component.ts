@@ -100,6 +100,10 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'select',
             placeholder: 'Sim ou não',
+            options: [
+                { value: false, label: 'não' },
+                { value: true, label: 'sim' },
+            ]
         },
         {
             title: '<strong>Você tem problemas cardíaco?</strong>',
