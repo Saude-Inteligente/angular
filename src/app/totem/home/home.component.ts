@@ -122,6 +122,11 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'select',
             placeholder: 'Digite sim ou não',
+            options: [
+                { value: false, label: 'não' },
+                { value: true, label: 'sim' },
+            ]
+            
         },
         {
             title: '<strong>Qual sua temperatura ?</strong>',
