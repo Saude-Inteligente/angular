@@ -64,7 +64,7 @@ export class TotemHomeComponent implements OnInit {
             keyboard: null,
             type: 'keyboard',
             placeholder: 'Digite seu aniversário',
-            mask: '00/00/00000'
+            mask: '0000/00/00'
         },
         {
             title: '<strong>Qual seu genero?</strong>',
